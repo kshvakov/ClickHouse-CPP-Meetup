@@ -611,6 +611,7 @@ done
  * merges
  * parts
  * query_log
+ * replication_queue
 
 
 У нас есть пишущие воркеры и API через которое идут запросы на чтение в ClickHouse от наших сервисов. 
@@ -620,7 +621,7 @@ done
 Память и CPU понятное дело мониторить нужно, но, важным для нас является:
 1) Для пишущего 
     * количество кусков в партиции `system.asynchronous_metrics MaxPartCountForPartition` и system.parts
-    * репликация system.asynchronous_metrics Replicas*
+    * репликация `system.asynchronous_metrics Replicas*`, `system.replication_queue`
 2) Для читающего 
     * Попадание в кэш блоков system.events MarkCacheMisses/MarkCacheHits
     * Время выполнения и сами запросы `system.query_log`
